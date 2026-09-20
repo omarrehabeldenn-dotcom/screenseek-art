@@ -14,7 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      favorites: {
+        Row: {
+          created_at: string
+          id: string
+          movie_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          movie_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          movie_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_movie_id_fkey"
+            columns: ["movie_id"]
+            isOneToOne: false
+            referencedRelation: "movies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      movies: {
+        Row: {
+          created_at: string
+          description: string
+          featured: boolean
+          genre: string
+          id: string
+          poster: string
+          rating: number
+          title: string
+          trailer_url: string
+          year: number
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          featured?: boolean
+          genre: string
+          id?: string
+          poster: string
+          rating?: number
+          title: string
+          trailer_url?: string
+          year: number
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          featured?: boolean
+          genre?: string
+          id?: string
+          poster?: string
+          rating?: number
+          title?: string
+          trailer_url?: string
+          year?: number
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          name?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
